@@ -1596,7 +1596,7 @@ class _BarPlotter(_CategoricalStatPlotter):
     def __init__(self, x, y, hue, data, order, hue_order,
                  estimator, ci, n_boot, units,
                  orient, color, palette, saturation, errcolor,
-                 errwidth, capsize, dodge):
+                 errwidth, capsize, dodge, width):
         """Initialize the plotter."""
         self.establish_variables(x, y, hue, data, orient,
                                  order, hue_order, units)
@@ -1608,6 +1608,7 @@ class _BarPlotter(_CategoricalStatPlotter):
         self.errcolor = errcolor
         self.errwidth = errwidth
         self.capsize = capsize
+        self.width = width
 
     def draw_bars(self, ax, kws):
         """Draw the bars onto `ax`."""
@@ -2960,12 +2961,12 @@ def barplot(x=None, y=None, hue=None, data=None, order=None, hue_order=None,
             estimator=np.mean, ci=95, n_boot=1000, units=None,
             orient=None, color=None, palette=None, saturation=.75,
             errcolor=".26", errwidth=None, capsize=None, dodge=True,
-            ax=None, **kwargs):
+            ax=None, width=0.8, **kwargs):
 
     plotter = _BarPlotter(x, y, hue, data, order, hue_order,
                           estimator, ci, n_boot, units,
                           orient, color, palette, saturation,
-                          errcolor, errwidth, capsize, dodge)
+                          errcolor, errwidth, capsize, dodge, width)
 
     if ax is None:
         ax = plt.gca()
